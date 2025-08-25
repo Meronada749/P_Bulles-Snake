@@ -24,6 +24,8 @@ function initSnake() {
  */
 function moveSnake() {
   // A compléter
+  let newHead = { x: snake[0].x, y: snake[0].y };
+  switch (direction) {  }
 }
 
 /**
