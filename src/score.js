@@ -1,7 +1,8 @@
 /**
  * ETML
- * Auteur : Meron Essayas
- * Date : 01.09.2024
+ * Auteur initial : Grégory Charmier
+ * Date initiale : 29.08.2024
+ * Modified by : Meron Essayas, 01.09.2025
  * Description : Gère l'affichage du score sur le canevas
  */
 
