@@ -34,3 +34,6 @@ function generateFood() {
 function drawFood() {
   // A compléter
 }
+
+
+export { generateFood, drawFood };

@@ -20,3 +20,6 @@
 function handleDirectionChange() {
   // A compléter
 }
+
+
+export { handleDirectionChange };

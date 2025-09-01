@@ -48,3 +48,6 @@ function moveSnake() {
 function drawSnake() {
   // A compléter
 }
+
+
+export { initSnake, moveSnake, drawSnake };
