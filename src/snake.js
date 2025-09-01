@@ -1,4 +1,11 @@
 /**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Contient les fonctions pour initialiser le serpent, le déplacer, et le dessiner sur le canevas
+ */
+
+/**
  * Initialise le serpent au début du jeu.
  *
  * Cette fonction crée le serpent en tant que tableau contenant un seul segment,
@@ -24,8 +31,6 @@ function initSnake() {
  */
 function moveSnake() {
   // A compléter
-  let newHead = { x: snake[0].x, y: snake[0].y };
-  switch (direction) {  }
 }
 
 /**

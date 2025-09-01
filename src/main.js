@@ -1,3 +1,10 @@
+/**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Point d'entrée principal du jeu. Il initialise le jeu, configure les paramètres, et contrôle le cycle de rendu
+ */
+
 import { initSnake, moveSnake, drawSnake } from "./snake.js";
 import { generateFood, drawFood } from "./food.js";
 import { handleDirectionChange } from "./controls.js";

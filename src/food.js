@@ -1,4 +1,11 @@
 /**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Gère la génération et le dessin de la nourriture sur la grille
+ */
+
+/**
  * Génère de manière aléatoire la position de la nourriture sur la grille du jeu.
  *
  * La nourriture est placée à une position aléatoire sur la grille, en s'assurant

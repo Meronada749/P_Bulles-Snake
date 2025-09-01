@@ -1,4 +1,11 @@
 /**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Gère l'affichage du score sur le canevas
+ */
+
+/**
  * Dessine le score sur le canvas.
  *
  * Cette fonction affiche le score actuel du jeu dans le coin supérieur gauche du canvas.

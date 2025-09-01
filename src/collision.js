@@ -1,4 +1,11 @@
 /**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Contient les fonctions pour vérifier les collisions du serpent avec les murs ou avec lui-même
+ */
+
+/**
  * Vérifie si la tête du serpent entre en collision avec son propre corps.
  *
  * Cette fonction détermine si la tête du serpent occupe la même position que

@@ -1,4 +1,11 @@
 /**
+ * ETML
+ * Auteur : Meron Essayas
+ * Date : 01.09.2024
+ * Description : Gère les entrées utilisateur pour contrôler la direction du serpent
+ */
+
+/**
  * Gère le changement de direction du serpent en fonction de l'entrée de l'utilisateur.
  *
  * Cette fonction est appelée chaque fois qu'une touche directionnelle est pressée.
