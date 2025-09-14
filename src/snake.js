@@ -15,7 +15,8 @@
  * @returns {Array<{x: number, y: number}>} - Un tableau contenant un objet représentant la position du premier segment du serpent.
  */
 function initSnake() {
-  // A compléter
+  const snake = [{ x: 1, y: 1 }];
+  return snake;
 }
 
 /**
@@ -49,6 +50,5 @@ function moveSnake(snake, direction, box) {
 function drawSnake(ctx, snake, box) {
   // A compléter
 }
-
 
 export { initSnake, moveSnake, drawSnake };
