@@ -15,7 +15,7 @@
  * @returns {Array<{x: number, y: number}>} - Un tableau contenant un objet représentant la position du premier segment du serpent.
  */
 function initSnake() {
-  const snake = [{ x: 9*20, y: 6*20 }]; // Position initiale du serpent
+  const snake = [{ x: 9 * 20, y: 6 * 20 }]; // Position initiale du serpent (9,6) sur une grille de 20x20 pixelsa
   return snake;
 }
 
@@ -70,9 +70,9 @@ function moveSnake(snake, direction, box) {
  */
 function drawSnake(ctx, snake, box) {
   snake.forEach((segment, index) => {
-    ctx.fillStyle = index === 0 ? "darkgreen" : "lightgreen"; // Couleur différente pour la tête
+    ctx.fillStyle = index === 0 ? "darkgreen" : "lightgreen"; // Couleur différente pour la tête et le corps
     ctx.fillRect(segment.x, segment.y, box, box);
-  });  
+  }); 
 }
 
 export { initSnake, moveSnake, drawSnake };

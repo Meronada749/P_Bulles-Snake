@@ -18,7 +18,9 @@
  * @returns {{x: number, y: number}} - Un objet contenant les coordonnées `x` et `y` de la nourriture générée.
  */
 function generateFood(box, canvas) {
-  // A compléter
+  const foodX = Math.floor(Math.random() * (canvas.width / box)) * box;
+  const foodY = Math.floor(Math.random() * (canvas.height / box)) * box;
+  return { x: foodX, y: foodY };
 }
 
 /**
@@ -33,7 +35,8 @@ function generateFood(box, canvas) {
  * @param {number} box - La taille d'une case de la grille en pixels, utilisée pour déterminer la taille de la nourriture.
  */
 function drawFood(ctx, food, box) {
-  // A compléter
+  ctx.fillStyle = "red"; // Couleur de la nourriture
+  ctx.fillRect(food.x, food.y, box, box); // Dessine un carré représentant la nourriture
 }
 
 

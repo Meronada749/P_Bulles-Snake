@@ -27,6 +27,7 @@ document.addEventListener("keydown", (event) => {
   direction = handleDirectionChange(event, direction);
 });
 
+
 function startGame() {
   snake = initSnake();
   food = generateFood(box, canvas);
@@ -35,7 +36,23 @@ function startGame() {
 }
 
 function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas avant de redessiner
+  
+  drawScore(ctx, score);
+  drawFood(ctx, food, box); 
   drawSnake(ctx, snake, box);
+
+  // Déplace le serpent
+  moveSnake(snake, direction, box);
+
+  // Check if snake eats food
+  if (snake[0].x === food.x && snake[0].y === food.y) {
+    const tail = snake[snake.length - 1];
+    snake.push({ x: tail.x, y: tail.y });
+    food = generateFood(box, canvas);
+    score += 1;
+ }
+
 }
 
 startGame();
