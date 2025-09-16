@@ -22,11 +22,37 @@ let food;
 let direction = "RIGHT";
 let score = 0;
 let gameInterval; // Variable pour stocker l'identifiant de l'intervalle
+let paused = false;
 
 document.addEventListener("keydown", (event) => {
-  direction = handleDirectionChange(event, direction);
+  if (event.code === "Space") {
+    togglePause();
+  } else {
+    direction = handleDirectionChange(event, direction);
+  }
 });
 
+function togglePause() {
+  paused = !paused;
+  if (paused) {
+    clearInterval(gameInterval);
+    drawPausedMessage();
+  } else {
+    gameInterval = setInterval(draw, gameSpeed);
+  }
+}
+
+function drawPausedMessage() {
+  // Dim the background slightly
+  ctx.fillStyle = "rgba(0, 0, 0, 0.3)"; // semi-transparent black
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw "Paused" text in the center
+  ctx.font = "40px Arial";
+  ctx.fillStyle = "rgba(255, 255, 255, 0.8)"; // semi-transparent white
+  ctx.textAlign = "center";
+  ctx.fillText("Paused", canvas.width / 2, canvas.height / 2);
+}
 
 function startGame() {
   snake = initSnake();
@@ -36,23 +62,29 @@ function startGame() {
 }
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas avant de redessiner
-  
-  drawScore(ctx, score);
-  drawFood(ctx, food, box); 
-  drawSnake(ctx, snake, box);
+  moveSnake(snake, direction, box); // Déplacement en premier
 
-  // Déplace le serpent
-  moveSnake(snake, direction, box);
+  // Vérifie collisions avec corps et murs
+  if (
+    checkCollision(snake[0], snake) ||
+    checkWallCollision(snake[0], canvas, box)
+  ) {
+    clearInterval(gameInterval); // Arrêter le jeu en cas de collision
+    alert("Game Over! Your score is " + score);
+    return; // Sortir de la fonction draw pour arrêter le jeu
+  }
 
-  // Check if snake eats food
+  //verifier si la tete du serpent est sur la meme position que la nourriture
   if (snake[0].x === food.x && snake[0].y === food.y) {
     const tail = snake[snake.length - 1];
     snake.push({ x: tail.x, y: tail.y });
     food = generateFood(box, canvas);
     score += 1;
- }
-
+  }
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas avant de redessiner
+  drawScore(ctx, score);
+  drawFood(ctx, food, box);
+  drawSnake(ctx, snake, box);
 }
 
 startGame();
