@@ -47,6 +47,32 @@ async function loadConfig() {
   }
 }
 
+// async function submitScore(playerName, playerScore) {
+//   try {
+//     const response = await fetch("http://localhost:3000/scores", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ name: playerName, score: playerScore })
+//     });
+//     const topScores = await response.json();
+//     renderLeaderboard(topScores); // optional: show leaderboard
+//   } catch (err) {
+//     console.error("Error submitting score:", err);
+//   }
+// }
+
+// function renderLeaderboard(scores) {
+//   const leaderboardContainer = document.getElementById("leaderboard");
+//   if (!leaderboardContainer) return;
+
+//   leaderboardContainer.innerHTML = "<h3>Top 5 Scores</h3>" +
+//     scores.map((s, i) => `<p>${i+1}. ${s.name} - ${s.score}</p>`).join("");
+// }
+
+// (async () => {
+//     await submitScore(playerName || "Anonymous", score);
+// })();
+
 function togglePause() {
   paused = !paused;
   if (paused) {
@@ -85,6 +111,8 @@ function draw() {
     checkWallCollision(snake[0], canvas, box)
   ) {
     clearInterval(gameInterval); // Arrêter le jeu en cas de collision
+    // const playerName = prompt("Game Over! Enter your name:"); // ask player name
+    // await submitScore(playerName || "Anonymous", score); // submit score
     alert("Game Over! Your score is " + score);
     return; // Sortir de la fonction draw pour arrêter le jeu
   }
