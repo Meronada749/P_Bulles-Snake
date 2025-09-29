@@ -16,10 +16,10 @@
  * @param {number} score - Le score à afficher, qui est un entier.
  */
 function drawScore(ctx, score) {
-  ctx.fillStyle = "black";       // text color
-  ctx.font = "20px Arial";       // font size and family
-  ctx.textAlign = "left";        // align text to the left
-  ctx.fillText(`Score: ${score}`, 10, 25); // draw text at x=10, y=25
+  ctx.fillStyle = "black";       
+  ctx.font = "20px Arial";       
+  ctx.textAlign = "left";        
+  ctx.fillText(`Score: ${score}`, 10, 25); // dessiner le texte à x=10, y=25
 }
 
 

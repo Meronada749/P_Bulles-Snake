@@ -15,8 +15,10 @@ import { drawScore } from "./score.js";
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-const box = 20;
-const gameSpeed = 200;
+//const box = 20;
+//const gameSpeed = 200;
+let box;
+let gameSpeed;
 let snake;
 let food;
 let direction = "RIGHT";
@@ -32,6 +34,19 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+async function loadConfig() {
+  try {
+    const response = await fetch('config.json');
+    if (!response.ok) throw new Error('Failed to load config');
+    const config = await response.json();
+    box = config.box;
+    gameSpeed = config.gameSpeed;
+    startGame(); // démarrer uniquement après le chargement de la configuration
+  } catch (error) {
+    console.error('Error loading config:', error);
+  }
+}
+
 function togglePause() {
   paused = !paused;
   if (paused) {
@@ -43,13 +58,13 @@ function togglePause() {
 }
 
 function drawPausedMessage() {
-  // Dim the background slightly
-  ctx.fillStyle = "rgba(0, 0, 0, 0.3)"; // semi-transparent black
+ // Atténuer légèrement l'arrière-plan
+  ctx.fillStyle = "rgba(0, 0, 0, 0.3)"; // noir semi-transparent
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Draw "Paused" text in the center
+  // Dessiner le texte « En pause » au centre
   ctx.font = "40px Arial";
-  ctx.fillStyle = "rgba(255, 255, 255, 0.8)"; // semi-transparent white
+  ctx.fillStyle = "rgba(255, 255, 255, 0.8)"; // blanc semi-transparent
   ctx.textAlign = "center";
   ctx.fillText("Paused", canvas.width / 2, canvas.height / 2);
 }
@@ -87,4 +102,5 @@ function draw() {
   drawSnake(ctx, snake, box);
 }
 
-startGame();
+//startGame();
+loadConfig(); // Pour démarrer le jeu, commencez par charger la configuration.
