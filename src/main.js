@@ -28,7 +28,7 @@ let paused = false;
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
-    togglePause();
+    togglePause(); //Appuyez sur Espace → appelle togglePause().
   } else {
     direction = handleDirectionChange(event, direction);
   }
@@ -39,8 +39,8 @@ async function loadConfig() {
     const response = await fetch('config.json');
     if (!response.ok) throw new Error('Failed to load config');
     const config = await response.json();
-    box = config.box;
-    gameSpeed = config.gameSpeed;
+    box = config.box; //20 pixels à partir du fichier de configuration
+    gameSpeed = config.gameSpeed; //gameSpeed à partir du fichier de configuration
     startGame(); // démarrer uniquement après le chargement de la configuration
   } catch (error) {
     console.error('Error loading config:', error);
@@ -76,10 +76,10 @@ async function loadConfig() {
 function togglePause() {
   paused = !paused;
   if (paused) {
-    clearInterval(gameInterval);
-    drawPausedMessage();
+    clearInterval(gameInterval); //arrête la boucle du jeu (le serpent arrête de bouger)
+    drawPausedMessage(); //affiche « PAUSED » sur la toile.
   } else {
-    gameInterval = setInterval(draw, gameSpeed);
+    gameInterval = setInterval(draw, gameSpeed); //redémarre la boucle de jeu à la vitesse définie.
   }
 }
 
@@ -119,11 +119,12 @@ function draw() {
 
   //verifier si la tete du serpent est sur la meme position que la nourriture
   if (snake[0].x === food.x && snake[0].y === food.y) {
-    const tail = snake[snake.length - 1];
-    snake.push({ x: tail.x, y: tail.y });
-    food = generateFood(box, canvas);
+    const tail = snake[snake.length - 1]; //dernier segment du serpent (sa queue).
+    snake.push({ x: tail.x, y: tail.y }); //Ajoute un nouveau segment au serpent à la position de la queue.
+    food = generateFood(box, canvas); //Génère un nouvel aliment
     score += 1;
   }
+
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas avant de redessiner
   drawScore(ctx, score);
   drawFood(ctx, food, box);
